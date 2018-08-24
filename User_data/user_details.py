@@ -49,23 +49,23 @@ def main():
 
         short_code = input().lower()
 
-        if short_code == 'cc':
+        if short_code == 'cu':
             print("New User")
             print("-"*10)
 
-            print ("First name ....")
+            print ("First name? ....")
             f_name = input()
 
-            print("Last name ...")
+            print("Last name? ...")
             l_name = input()
 
-            print("Phone number ...")
+            print("Phone number? ...")
             p_number = input()
 
-            print("Email address ...")
+            print("Email address? ...")
             e_address = input()
 
-            print("Account ...")
+            print("Account? ...")
             account = input()
 
 
