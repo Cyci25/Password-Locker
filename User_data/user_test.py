@@ -29,12 +29,28 @@ class TestUser(unittest.TestCase):
         self.assertEqual(self.new_user.email,"c2muriithi@gmail.com")
         self.assertEqual(self.new_user.account,"Instagram")
 
-    def test_save_user(self):
+    def test_save_multiple_user(self):
         '''
         test_save_user test case to test if the user object is saved into the user list
         '''
         
         self.new_user.save_user()
+        test_user = User("Test","user","0712873465","test@user.com","account")
+        test_user.save_user()
+
+        self.assertEqual(len(User.user_list),3)
+
+    def test_delete_user(self):
+
+        '''
+        test_delete_user test case to test if the user object can be deleted from the user list
+        '''
+
+        self.new_user.save_user()
+        test_user = User("Test","user","0712873465","test@user.com","account")
+        test_user.save_user()
+
+        self.new_user.delete_user()
         self.assertEqual(len(User.user_list),1)
 
 
