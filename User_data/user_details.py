@@ -1,5 +1,10 @@
 #!/usr/bin/env python3.6
+from credential import Credential  
 from user import User
+import random
+
+
+
 def create_user(fname,lname,phone,email,account):
     '''
     Function to create a new user

@@ -1,10 +1,10 @@
 class Credential:
 
+    credential_list = []
+    
     def __init__(self,Name,password):
         self.Name = Name
         self.password = password
-
-    credential_list = []
 
     def save_credential(self):
         Credential.credential_list.append(self)

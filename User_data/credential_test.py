@@ -1,5 +1,6 @@
 import unittest
-from credential import Credential
+import user from User
+import random
 
 class TestCredential(unittest.TestCase):
 
