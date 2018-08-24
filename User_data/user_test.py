@@ -17,6 +17,11 @@ class TestUser(unittest.TestCase):
 
         self.new_user = User("Cynthia","Muriithi","0712873465","c2muriithi@gmail.com","Instagram") # create user object
 
+    def tearDown(self):
+        '''
+        tearDown method that cleans up after each test case has run       
+        '''
+        User.user_list = []
 
     def test_init(self):
         '''
@@ -38,7 +43,7 @@ class TestUser(unittest.TestCase):
         test_user = User("Test","user","0712873465","test@user.com","account")
         test_user.save_user()
 
-        self.assertEqual(len(User.user_list),3)
+        self.assertEqual(len(User.user_list),2)
 
     def test_delete_user(self):
 
@@ -52,6 +57,7 @@ class TestUser(unittest.TestCase):
 
         self.new_user.delete_user()
         self.assertEqual(len(User.user_list),1)
+
 
 
 
