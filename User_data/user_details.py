@@ -38,14 +38,14 @@ def display_users():
     return User.display_users()
 
 def main():
-    print("Hello Welcome to your user list. What is your name?")
+    print("Hello Welcome to user list. What is your name?")
     user_name = input()
 
     print(f"Hello {user_name}. What would you like to do?")
     print('\n')
 
     while True:
-        print("Use these short codes : cu - create a new user, du - display users, fu -find a user, ex -exit the user list ")
+        print("Use these short codes : cu - create a new user,del - delete a user, du - display users, fu -find a user, ex -exit the user list ")
 
         short_code = input().lower()
 
@@ -68,6 +68,12 @@ def main():
             print("Account? ...")
             account = input()
 
+            print("Log In name? ...")
+            account = input()
+
+            print("Password ...")
+            account = input()
+
 
             save_users(create_user(f_name,l_name,p_number,e_address,account)) # create and save new user.
             print ('\n')
@@ -88,6 +94,19 @@ def main():
                 print('\n')
                 print("You dont seem to have any users saved yet")
                 print('\n')
+        elif short_code == 'del':
+
+            print("Enter the number you want to delete")
+
+            search_number = input()
+            if check_existing_users(search_number):
+                search_number = find_user(search_number)
+
+                del_userdel_user(delete_user(f_name,l_name,p_number,e_address,account))
+                print ('\n')
+                print(f" {f_name} {l_name} has been deleted")
+                print ('\n')
+
 
         elif short_code == 'fu':
 
