@@ -4,4 +4,10 @@ class Credential:
         self.Name = Name
         self.password = password
 
-    credential_list =[]
+    credential_list = []
+
+    def save_credential(self):
+        Credential.credential_list.append(self)
+    
+    # def delete_new_credential(self):
+    #     Credential.credential_list.remove(self)
