@@ -58,6 +58,23 @@ class TestUser(unittest.TestCase):
         self.new_user.delete_user()
         self.assertEqual(len(User.user_list),1)
 
+    def test_find_user_by_number(self):
+
+        '''
+        test to check if we can find a user by their phone numbers and display information
+        '''
+
+        self.new_user.save_user()
+        test_user = User("Test","user","0712873465","c2muriithi@gmail.com","account")
+        test_user.save_user()
+
+        found_user = User.find_by_number("0712873465")
+
+        self.assertEqual(found_user.email,test_user.email)
+
+
+
+
 
 
 
