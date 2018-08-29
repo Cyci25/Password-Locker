@@ -3,13 +3,15 @@ class User:
     Class that generates new instances of users.
     """
 
-    def __init__(self,first_name,last_name,number,email,account):
+    def __init__(self,first_name,last_name,number,email,account,Password,user_name):
 
         self.first_name = first_name
         self.last_name = last_name
         self.phone_number = number
         self.email = email
         self.account = account
+        self.Password = Password
+        self.user_name = user_name
 
     user_list = [] # Empty user list
 

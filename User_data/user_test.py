@@ -15,7 +15,7 @@ class TestUser(unittest.TestCase):
         Set up method to run before each test cases.
         '''
 
-        self.new_user = User("Cynthia","Muriithi","0712873465","c2muriithi@gmail.com","Instagram") # create user object
+        self.new_user = User("Cynthia","Muriithi","0712873465","c2muriithi@gmail.com","Instagram","123456","Cycikui") # create user object
 
     def tearDown(self):
         '''
@@ -33,6 +33,9 @@ class TestUser(unittest.TestCase):
         self.assertEqual(self.new_user.phone_number,"0712873465")
         self.assertEqual(self.new_user.email,"c2muriithi@gmail.com")
         self.assertEqual(self.new_user.account,"Instagram")
+        self.assertEqual(self.new_user.Password,"123456")
+        self.assertEqual(self.new_user.user_name,"Cycikui")
+
 
     def test_save_multiple_user(self):
         '''
@@ -40,7 +43,7 @@ class TestUser(unittest.TestCase):
         '''
         
         self.new_user.save_user()
-        test_user = User("Test","user","0712873465","test@user.com","account")
+        test_user = User("Test","user","0712873465","c2muriithi@gmail.com","account","123456","Cycikui")
         test_user.save_user()
 
         self.assertEqual(len(User.user_list),2)
@@ -52,7 +55,7 @@ class TestUser(unittest.TestCase):
         '''
 
         self.new_user.save_user()
-        test_user = User("Test","user","0712873465","test@user.com","account")
+        test_user = User("Test","user","0712873465","c2muriithi@gmail.com","account","123456","Cycikui")
         test_user.save_user()
 
         self.new_user.delete_user()
@@ -65,7 +68,7 @@ class TestUser(unittest.TestCase):
         '''
 
         self.new_user.save_user()
-        test_user = User("Test","user","0712873465","c2muriithi@gmail.com","account")
+        test_user = User("Test","user","0712873465","c2muriithi@gmail.com","account","123456","Cycikui")
         test_user.save_user()
 
         found_user = User.find_by_number("0712873465")
@@ -80,7 +83,7 @@ class TestUser(unittest.TestCase):
         '''
 
         self.new_user.save_user()
-        test_user = User("Test","user","0712873465","c2muriithi@gmail.com","account")
+        test_user = User("Test","user","0712873465","c2muriithi@gmail.com","account","123456","Cycikui")
         test_user.save_user()
 
         user_exists = User.user_exist("0712873465")

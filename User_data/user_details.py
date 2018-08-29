@@ -5,11 +5,11 @@ import random
 
 
 
-def create_user(fname,lname,phone,email,account):
+def create_user(fname,lname,phone,email,account,Password,user_name):
     '''
     Function to create a new user
     '''
-    new_user = User(fname,lname,phone,email,account)
+    new_user = User(fname,lname,phone,email,account,Password,user_name)
     return new_user
 
 def save_users(user):
@@ -74,13 +74,13 @@ def main():
             account = input()
 
             print("Log In name? ...")
-            account = input()
+            user_name = input()
 
             print("Password ...")
-            account = input()
+            Password = input()
 
 
-            save_users(create_user(f_name,l_name,p_number,e_address,account)) # create and save new user.
+            save_users(create_user(f_name,l_name,p_number,e_address,account,Password,user_name)) # create and save new user.
             print ('\n')
             print(f"New User {f_name} {l_name} created")
             print ('\n')
@@ -99,18 +99,19 @@ def main():
                 print('\n')
                 print("You dont seem to have any users saved yet")
                 print('\n')
-        elif short_code == 'del':
+                
+        # elif short_code == 'del':
 
-            print("Enter the number you want to delete")
+        #     print("Enter the number you want to delete")
 
-            search_number = input()
-            if check_existing_users(search_number):
-                search_number = find_user(search_number)
+        #     search_number = input()
+        #     if check_existing_users(search_number):
+        #         search_number = find_user(search_number)
 
-                del_userdel_user(delete_user(f_name,l_name,p_number,e_address,account))
-                print ('\n')
-                print(f" {f_name} {l_name} has been deleted")
-                print ('\n')
+        #         del_userdel_user(find(f_name,l_name,p_number,e_address,account))
+        #         print ('\n')
+        #         print(f" {f_name} {l_name} has been deleted")
+        #         print ('\n')
 
 
         elif short_code == 'fu':
@@ -125,6 +126,10 @@ def main():
 
                 print(f"Phone number.......{search_user.phone_number}")
                 print(f"Email address.......{search_user.email}")
+                print(f"Account name.......{search_user.account}")
+                print(f"User name.......{search_user.user_name}")
+                print(f"Password.......{search_user.Password}")
+               
             else:
                 print("That user does not exist")
 
