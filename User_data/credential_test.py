@@ -1,39 +1,49 @@
+from credential import Credentials
+from user import UsersData
 import unittest
-import user from User
-import random
+import pyperclip
 
-class TestCredential(unittest.TestCase):
-
+class TestCredentials(unittest.TestCase):
+    '''
+    Test class that defines the test cases for creating and authenticating credentials
+    '''
     def setUp(self):
-
-        self.new_credential = Credential("Name", "password")
+        '''
+        Set up method to run before each test cases.
+        '''
+        self.new_user = Credentials(1,"Cynthia","Muriithi")
 
     def tearDown(self):
-
-        Credential.credential_list = []
+        '''
+        TearDown method that does clean up after each test case has run.
+        '''
+        Credentials.users_list = []
 
     def test_init(self):
+        '''
+        Test_init test case to test if the object is initialized properly
+        '''
+        self.assertEqual(self.new_user.identify,1)
+        self.assertEqual(self.new_user.user_name,"Cynthia")
+        self.assertEqual(self.new_user.password,"Muriithi")
 
-        self.assertEqual(self.new_credential.Name,"Name")
-        self.assertEqual(self.new_credential.password,"password")
+    def test_create(self):
+        '''
+        Test_create method that checks if the new credential is saved
+        '''
+        self.new_user.create_account()
+        self.assertEqual(len(Credentials.users_list),1)
 
-    def test_save_multiple_credentials(self):
+    def test_authenticate(self):
+        '''
+        Test_authenticate method that checks if authentication function signs in a user
+        '''
+        self.new_user.create_account()
+        test_account = Credentials(1,"Test","Password")
+        test_account.create_account()
 
-        self.new_credential.save_credential()
-        test_credential = Credential("Test","password")
-        test_credential.save_credential()
+        found_user = Credentials.authenticate_account("Test","Password")
+        self.assertEqual(found_user.identify , test_account.identify)
 
-        self.assertEqual(len(Credential.credential_list),2)
-
-    def test_delete_credential(self):
-
-        self.new_credential.save_credential()
-        test_credential = Credential("Test","password")
-        test_credential.save_credential()
-
-        self.new_credential.delete_credential()
-        self.assertEqual(len(Credential.credential_list),1)
-
-
-if __name__ == '__main__':
-    unittest.main() 
+if __name__ == "__main__":
+    unittest.main()

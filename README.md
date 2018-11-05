@@ -1,5 +1,5 @@
 # Password Generator
-## 26-Aug-2018
+## 2-Nov-2018
 ### By Cynthia Muriithi
 ## Description
 This is an app that lets users generate and store passwords for their various accounts and profiles. 

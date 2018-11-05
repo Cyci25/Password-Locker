@@ -1,107 +1,71 @@
-import unittest 
-from user import User
+from credential import Credentials
+from user import UsersData
+import unittest
+import pyperclip
 
-class TestUser(unittest.TestCase):
-
+class TestUserData(unittest.TestCase):
     '''
-    Test class that defines test cases for the user class behaviours.
-
-    Args:
-        unittest.TestCase: TestCase class that helps in creating test cases
+    Test class that defines the test cases for creating accounts login credentials
     '''
-
     def setUp(self):
         '''
         Set up method to run before each test cases.
         '''
-
-        self.new_user = User("Cynthia","Muriithi","0712873465","c2muriithi@gmail.com","Instagram","123456","Cycikui") # create user object
+        self.new_data = UsersData(1,1,"Insta","account")
 
     def tearDown(self):
         '''
-        tearDown method that cleans up after each test case has run       
+        TearDown method that does clean up after each test case has run.
         '''
-        User.user_list = []
+        UsersData.data_list = []
 
     def test_init(self):
         '''
-        test_init test case to test if the object is initialized properly
+        Test_init test case to test if the object is initialized properly
         '''
+        self.assertEqual(self.new_data.identify,1)
+        self.assertEqual(self.new_data.data_id,1)
+        self.assertEqual(self.new_data.account,"Insta")
+        self.assertEqual(self.new_data.acc_key,"account")
 
-        self.assertEqual(self.new_user.first_name,"Cynthia")
-        self.assertEqual(self.new_user.last_name,"Muriithi")
-        self.assertEqual(self.new_user.phone_number,"0712873465")
-        self.assertEqual(self.new_user.email,"c2muriithi@gmail.com")
-        self.assertEqual(self.new_user.account,"Instagram")
-        self.assertEqual(self.new_user.Password,"123456")
-        self.assertEqual(self.new_user.user_name,"Cycikui")
-
-
-    def test_save_multiple_user(self):
+    def test_add_password(self):
         '''
-        test_save_user test case to test if the user object is saved into the user list
+        test_add_password method checks if the account and password can be saved
         '''
-        
-        self.new_user.save_user()
-        test_user = User("Test","user","0712873465","c2muriithi@gmail.com","account","123456","Cycikui")
-        test_user.save_user()
+        self.new_data.add_password()
+        self.assertEqual(len(UsersData.data_list),1)
 
-        self.assertEqual(len(User.user_list),2)
-
-    def test_delete_user(self):
-
+    def test_display_data(self):
         '''
-        test_delete_user test case to test if the user object can be deleted from the user list
+        Test_display_data mehtod checks if the data saved can be displayed.
         '''
+        self.new_data.add_password()
+        test_data = UsersData(1,1,"Insta","account")
+        test_data.add_password()
 
-        self.new_user.save_user()
-        test_user = User("Test","user","0712873465","c2muriithi@gmail.com","account","123456","Cycikui")
-        test_user.save_user()
+        data_found = UsersData.display_data(1,1)
+        self.assertEqual(data_found.account,test_data.account)
 
-        self.new_user.delete_user()
-        self.assertEqual(len(User.user_list),1)
-
-    def test_find_user_by_number(self):
-
+    def test_data_exists(self):
         '''
-        test to check if we can find a user by their phone numbers and display information
+        Test_data_exists method checks if the function for checking data saved works
         '''
+        self.new_data.add_password()
+        test_data = UsersData(1,1,"Insta","account")
+        test_data.add_password()
 
-        self.new_user.save_user()
-        test_user = User("Test","user","0712873465","c2muriithi@gmail.com","account","123456","Cycikui")
-        test_user.save_user()
+        data_exists = UsersData.existing_data(1)
+        self.assertTrue(data_exists)
 
-        found_user = User.find_by_number("0712873465")
-
-        self.assertEqual(found_user.email,test_user.email)
-
-    
-    def test_user_exists(self):
-
+    def test_copy_password(self):
         '''
-        test to check if we can return a Boolean if we cannot find the user.
+        Test_copy_password method checks if the copy password function works
         '''
+        self.new_data.add_password()
+        UsersData.copy_password(1,1)
 
-        self.new_user.save_user()
-        test_user = User("Test","user","0712873465","c2muriithi@gmail.com","account","123456","Cycikui")
-        test_user.save_user()
-
-        user_exists = User.user_exist("0712873465")
-
-        self.assertTrue(user_exists)
-
-    
-    def test_display_all_users(self):
-        '''
-        method that returns a list of all users saved
-        '''
-
-        self.assertEqual(User.display_users(),User.user_list) 
+        self.assertEqual(self.new_data.acc_key,pyperclip.paste())
 
 
-
-
-
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
