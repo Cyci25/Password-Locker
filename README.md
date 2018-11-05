@@ -22,15 +22,17 @@ You will need to:
 
 ## Specifications
 
-|Behaviour | Input|	Output|
-|Display codes for navigation |	In terminal: $./password_locker.py |	Welcome, choose an option: ca-Create Account, li-Log In, ex-Exit|
-|Display prompt for creating an account | Enter: ca | Enter your first name, last name and password|
-|Display prompt for login in	|Enter: li	|Enter your account name and password|
-|Display codes for navigation|	Successful login|	Choose an option: cc - Create Credential, dc - Display Credentials, copy - Copy Credential, ex - exit|
-|Display prompt for creating a credential |	Enter: cc|	Enter the site name, your username and password|
-|Display a list of credentials|	Enter: dc|	Prints a list of saved credentials|
-|Display prompt for which credential to copy |	Enter: copy |	Enter the site name of the credential you wish to copy.|
-|Exit application|	Enter: ex|	Exit the current navigation stage|
+## Specifications
+| Behavior            | Input                         | Output                        |
+| ------------------- | ----------------------------- | ----------------------------- |
+| Create new account | Type: cc <br>Username: Cynthia <br>Password: pass | User Cynthia has been created.<br>Log in to Continue |
+| Sign in | Type: ss <br>Username: Cynthia<br>Password: pass | Welcome Cynthia! What would you like to do? |
+| Add Password | Type: ad <br>Account: Instagram <br>Length of password: 2 | **Generates a password with x length**<br>Your password for instagram is 5f |
+| View list of passwords | Type: vp | Generates a lists of accounts and passwords |
+| Copy Password to clipboard | Type: cp <br>Enter index: 2 | Password 2 on the list has been copied and is ready for pasting |
+| Log Out | Type: lo | **Logs out the user** <br>Goodbye Cynthia! |
+| Exit Application | Type: ex | **Closes the application** <br>Goodbye Cynthia! |
+
 
 ## Built With
 * Python version 3.6

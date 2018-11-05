@@ -175,7 +175,7 @@ def main():
 
         elif short_code == "ex":
             print("\n")
-            print(f"Goodbye!")
+            print(f"Goodbye {get_result.user_name}!")
             print("-"*30)
             break
 
