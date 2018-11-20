@@ -37,7 +37,7 @@ class TestUserData(unittest.TestCase):
 
     def test_display_data(self):
         '''
-        Test_display_data mehtod checks if the data saved can be displayed.
+        Test_display_data method checks if the data saved can be displayed.
         '''
         self.new_data.add_password()
         test_data = UsersData(1,1,"Insta","account")

@@ -6,6 +6,9 @@ class UsersData:
     '''
     data_list = []
     def __init__(self,ident,data_id,account,acc_key):
+        '''
+        Initalizing the variables
+        '''
         self.ident = ident
         self.data_id = data_id
         self.account = account
@@ -39,5 +42,8 @@ class UsersData:
 
     @classmethod
     def copy_password(cls,number,count):
+        '''
+        Checks if the password can be copied to a clipboard
+        '''
         found_password = UsersData.display_data(number,count)
         pyperclip.copy(found_password.acc_key)
